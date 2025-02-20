@@ -1,82 +1,83 @@
+📌 Leaderboard Manager
+A simple leaderboard application that allows users to be added, removed, and updated dynamically while maintaining a real-time sorted leaderboard.
 
-# Getting Started with Create React App
+🚀 Live Demo
+🌍 Frontend: https://your-live-link.com
+🌍 API (Mock JSON Server): https://your-api-link.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+📂 Project Setup & Installation
+1️⃣ Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/leaderboard-manager.git
+cd leaderboard-manager
+2️⃣ Install Dependencies
+bash
+Copy
+Edit
+npm install
+3️⃣ Start the Mock API Server
+The project uses a JSON server as a mock API. To start it, run:
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-## Mock API Endpoints
-
-- **GET /users**: Get all users.
-- **POST /users**: Add a new user.
-- **PATCH /users/:id**: Update a user’s points.
-- **DELETE /users/:id**: Delete a user.
-
-To start the mock API, run:
-```bash
+bash
+Copy
+Edit
 json-server --watch db.json --port 3051
+Mock API will be available at: http://localhost:3051
+
+4️⃣ Start the Frontend
+bash
+Copy
+Edit
+npm start
+Now, open your browser and visit: http://localhost:3000
+
+🎯 Features
+✅ Add new users
+✅ Increase or decrease user points dynamically
+✅ Automatically reorders users based on score
+✅ Delete users from the leaderboard
+✅ Click on a user to view detailed information
+✅ Search and filter users by name
+✅ Sort leaderboard by name or points
+
+📌 API Endpoints (Mock Server)
+Method	Endpoint	Description
+GET	/users	Get all users
+POST	/users	Add a new user
+PATCH	/users/:id	Update a user's points
+DELETE	/users/:id	Remove a user from the leaderboard
+Example API Request (Add a User)
+json
+Copy
+Edit
+POST /users
+{
+  "name": "John Doe",
+  "age": 25,
+  "points": 0,
+  "address": "123 Street, City"
+}
+Example API Request (Update Points)
+json
+Copy
+Edit
+PATCH /users/1
+{
+  "points": 10
+}
+📌 Available Scripts
+Command	Description
+npm start	Runs the app in development mode (http://localhost:3000)
+npm run build	Builds the app for production
+json-server --watch db.json --port 3051	Starts the mock API at http://localhost:3051
+🛠 Deployment
+To deploy your application:
+
+Build the project:
+bash
+Copy
+Edit
+npm run build
+Deploy the /build folder to your preferred hosting service (Netlify, Vercel, GitHub Pages, etc.).
