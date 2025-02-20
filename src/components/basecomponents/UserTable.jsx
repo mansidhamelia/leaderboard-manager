@@ -101,7 +101,6 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                                 key={col.key}
                                                 className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${col.key === "name" ? "text-gray-900 cursor-pointer hover:text-cyan-800" : ""
                                                     }`}
-                                            // onClick={() => col.key === "name" && setSelectedUser(user)}
                                             >
                                                 {col.key === "name" ? (
                                                     <button

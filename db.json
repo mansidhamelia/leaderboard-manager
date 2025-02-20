@@ -1,45 +1,60 @@
 {
-    "user": [
-        {
-            "id": 1,
-            "name": "Max",
-            "age": 20,
-            "points": 0,
-            "address": "125 86th street"
-        },
-        {
-            "id": 2,
-            "name": "Alexandra",
-            "age": 35,
-            "points": 0,
-            "address": "125 86th street"
-        },
-         {
-            "id": 3,
-            "name": "Mike",
-            "age": 26,
-            "points": 0,
-
-            "address": "125 86th street"
-        },
-        {
-            "id": 4,
-            "name": "Chris",
-            "age": 30,
-            "points": 0,
-            "address": "125 86th street"
-        }, {
-            "id": 5,
-            "name": "Bell",
-            "age": 28,
-            "points": 0,
-            "address": "125 86th street"
-        }, {
-            "id": 6,
-            "name": "Kevin",
-            "age": 32,
-            "points": 0,
-            "address": "125 86th street"
-        }
-    ]
+  "users": [
+    {
+      "id": "1",
+      "name": "Max",
+      "age": 20,
+      "points": -2,
+      "address": "125 86th street"
+    },
+    {
+      "id": "2",
+      "name": "Alexandra",
+      "age": 35,
+      "points": 8,
+      "address": "125 86th street"
+    },
+    {
+      "id": "3",
+      "name": "Mike",
+      "age": 26,
+      "points": 9,
+      "address": "125 86th street"
+    },
+    {
+      "id": "4",
+      "name": "Chris",
+      "age": 30,
+      "points": -7,
+      "address": "125 86th street"
+    },
+    {
+      "id": "5",
+      "name": "Bell",
+      "age": 28,
+      "points": 14,
+      "address": "125 86th street"
+    },
+    {
+      "id": "6f40",
+      "name": "Mansi",
+      "age": 23,
+      "points": 9,
+      "address": "1503-2355 madison ave"
+    },
+    {
+      "id": "7715",
+      "name": "one",
+      "age": 25,
+      "points": 0,
+      "address": "215v5 5d55d "
+    },
+    {
+      "id": "80b2",
+      "name": "two",
+      "age": 5,
+      "points": 0,
+      "address": "dfss 2332"
+    }
+  ]
 }
