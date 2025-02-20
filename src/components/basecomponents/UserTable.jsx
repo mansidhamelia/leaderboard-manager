@@ -2,26 +2,15 @@ import { useState } from 'react';
 import { ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import UserModal from './UserModalComponent';
 
-export default function Table({ columns, data, onAddUser, handleUpdatePoints, confirmDeleteUser }) {
+export default function Table({ columns, data, onAddUser, handleUpdatePoints, confirmDeleteUser, searchTerm, setSearchTerm }) {
 
-    const [searchTerm, setSearchTerm] = useState('');
     const [selectedUser, setSelectedUser] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Handle filtering
-    const filteredData = data.filter(user =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    // Handle updating points
-    // const handleUpdatePoints = (userId, change) => {
-    //     setUsers((prevUsers) =>
-    //         prevUsers.map((user) =>
-    //             user.id === userId ? { ...user, points: user.points + change } : user
-    //         )
-    //     );
-    // };
-
+    // const filteredData = data.filter(user =>
+    //     user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
 
     // Open modal with selected user
     const handleOpenModal = (user) => {
@@ -93,7 +82,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                 </tr>
                             </thead>
                             <tbody className="bg-white">
-                                {filteredData.map((user) => (
+                                {data.map((user) => (
                                     <tr key={user.id} className="even:bg-gray-50 text-left">
                                         {columns.map((col) => (
                                             // <td key={col.key} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -109,9 +98,12 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                                     >
                                                         {user[col.key]}
                                                     </button>
-                                                ) : (
-                                                    user[col.key]
-                                                )}
+                                                )
+                                                    : col.key === "points" ? (
+                                                        `${user[col.key]} points`
+                                                    ) : (
+                                                        user[col.key]
+                                                    )}
                                             </td>
                                         ))}
                                         <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-500">

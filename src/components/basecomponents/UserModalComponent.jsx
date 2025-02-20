@@ -36,7 +36,7 @@ export default function UserModal({ open, setOpen, user }) {
                                     User Details
                                 </DialogTitle>
                                 <div className="text-sm flex flex-1 flex-col">
-                                    <h3 className="mt-6 text-base font-medium text-gray-900">{user.name} </h3>
+                                    <h3 className="mt-6 text-base font-medium text-gray-900">NAME: {user.name} </h3>
                                     <dl className="mt-1 flex flex-grow flex-col justify-between">
                                         <dd className="text-sm text-gray-500">AGE: {user.age}</dd>
                                         <dd className="text-sm text-gray-500">POINTS: {user.points}</dd>
