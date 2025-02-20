@@ -1,14 +1,33 @@
 import { useState } from 'react';
 import { ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import UserModal from './UserModalComponent';
 
 export default function Table({ columns, data, onAddUser, handleUpdatePoints, confirmDeleteUser }) {
 
     const [searchTerm, setSearchTerm] = useState('');
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Handle filtering
     const filteredData = data.filter(user =>
         user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    // Handle updating points
+    // const handleUpdatePoints = (userId, change) => {
+    //     setUsers((prevUsers) =>
+    //         prevUsers.map((user) =>
+    //             user.id === userId ? { ...user, points: user.points + change } : user
+    //         )
+    //     );
+    // };
+
+
+    // Open modal with selected user
+    const handleOpenModal = (user) => {
+        setSelectedUser(user);
+        setIsModalOpen(true);
+    };
     return (
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center justify-between">
@@ -31,15 +50,15 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                         placeholder="Search by name..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-cyan-800 focus:ring-cyan-800 sm:text-sm"
                     />
                 </div>
 
-                <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+                <div className="mt-4 sm:ml-12 sm:mt-0 sm:flex-none">
                     <button
                         onClick={onAddUser}
-                        className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm 
-                        hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="block rounded-md bg-cyan-900 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm 
+                        hover:bg-cyan-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-900"
                     >
                         Add User
                     </button>
@@ -58,7 +77,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                         <th
                                             key={col.key}
                                             onClick={col.onClick}
-                                            className={` px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer ${col.onClick ? "hover:text-indigo-600" : ""}`}
+                                            className={` px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer ${col.onClick ? "hover:text-cyan-900" : ""}`}
                                         >
                                             <a href="#" className="group inline-flex" >
                                                 {col.label}
@@ -77,18 +96,40 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                 {filteredData.map((user) => (
                                     <tr key={user.id} className="even:bg-gray-50 text-left">
                                         {columns.map((col) => (
-                                            <td key={col.key} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                {user[col.key]}
+                                            // <td key={col.key} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            <td
+                                                key={col.key}
+                                                className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${col.key === "name" ? "text-gray-900 cursor-pointer hover:text-cyan-800" : ""
+                                                    }`}
+                                            // onClick={() => col.key === "name" && setSelectedUser(user)}
+                                            >
+                                                {col.key === "name" ? (
+                                                    <button
+                                                        onClick={() => handleOpenModal(user)}
+                                                        className="text-gray-900 hover:text-cyan-800"
+                                                    >
+                                                        {user[col.key]}
+                                                    </button>
+                                                ) : (
+                                                    user[col.key]
+                                                )}
                                             </td>
                                         ))}
-                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                        <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-500">
                                             <div className="flex gap-2">
-                                                <button onClick={() => handleUpdatePoints(user.id, 1)} className="px-2 py-1 bg-green-500 text-white rounded">+</button>
-                                                <button onClick={() => handleUpdatePoints(user.id, -1)} className="px-2 py-1 bg-red-500 text-white rounded">-</button>
-                                                <button onClick={() => confirmDeleteUser(user.id)} className="px-2 py-1 bg-gray-500 text-white rounded">Delete</button>
+                                                <button onClick={() => handleUpdatePoints(user.id, 1)} className="whitespace-nowrap px-2 py-1 text-sm text-gray-500">
+                                                    <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                        +
+                                                    </span>
+                                                </button>
+                                                <button onClick={() => handleUpdatePoints(user.id, -1)} className="whitespace-nowrap px-2 py-1 text-sm text-gray-500">
+                                                    <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-base font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
+                                                        -
+                                                    </span>
+                                                </button>
+                                                <button onClick={() => confirmDeleteUser(user.id)} className="whitespace-nowrap px-2 py-1 bg-cyan-900 text-white rounded-md">Delete</button>
                                             </div>
                                         </td>
-                                        {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{actions(user)}</td> */}
                                     </tr>
                                 ))}
                             </tbody>
@@ -96,6 +137,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                     </div>
                 </div>
             </div>
+            <UserModal user={selectedUser} open={isModalOpen} setOpen={setIsModalOpen} />
         </div>
     );
 }
