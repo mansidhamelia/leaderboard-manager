@@ -3,7 +3,7 @@ import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     return (
         <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 my-4">
-            <div className="-mt-px flex w-0 flex-1">
+            <div className="-mt-px flex w-0 flex-1 ml-5">
                 <button
                     onClick={() => onPageChange(currentPage - 1)}
                     disabled={currentPage === 1}
@@ -27,7 +27,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                     </button>
                 ))}
             </div>
-            <div className="-mt-px flex w-0 flex-1 justify-end">
+            <div className="-mt-px flex w-0 flex-1 justify-end mr-5">
                 <button
                     onClick={() => onPageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}

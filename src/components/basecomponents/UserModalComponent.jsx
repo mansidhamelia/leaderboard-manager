@@ -30,19 +30,36 @@ export default function UserModal({ open, setOpen, user }) {
                         </div>
 
                         {/* Modal Content */}
+
                         <div className="sm:flex sm:items-start">
                             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                <DialogTitle as="h3" className="text-lg font-semibold text-gray-900">
+                                <DialogTitle as="h3" className="text-2xl font-bold text-cyan-900">
                                     User Details
                                 </DialogTitle>
-                                <div className="text-sm flex flex-1 flex-col">
-                                    <h3 className="mt-6 text-base font-medium text-gray-900">NAME: {user.name} </h3>
-                                    <dl className="mt-1 flex flex-grow flex-col justify-between">
-                                        <dd className="text-sm text-gray-500">AGE: {user.age}</dd>
-                                        <dd className="text-sm text-gray-500">POINTS: {user.points}</dd>
-                                        <dd className="text-sm text-gray-500">ADDRESS: {user.address}</dd>
+                                <div className="mt-6 space-y-4">
+                                    {/* User Name */}
+                                    <div className="flex items-center space-x-4">
+                                        <span className="text-lg font-medium text-gray-700">Name:</span>
+                                        <span className="text-lg text-gray-900">{user.name} {user.last_name} </span>
+                                    </div>
 
-                                    </dl>
+                                    {/* User Age */}
+                                    <div className="flex items-center space-x-4">
+                                        <span className="text-lg font-medium text-gray-700">Age:</span>
+                                        <span className="text-lg text-gray-900">{user.age}</span>
+                                    </div>
+
+                                    {/* User Points */}
+                                    <div className="flex items-center space-x-4">
+                                        <span className="text-lg font-medium text-gray-700">Points:</span>
+                                        <span className="text-lg text-gray-900">{user.points} points</span>
+                                    </div>
+
+                                    {/* User Address */}
+                                    <div className="flex items-start space-x-4">
+                                        <span className="text-lg font-medium text-gray-700">Address:</span>
+                                        <span className="text-lg text-gray-900 break-words">{user.address}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

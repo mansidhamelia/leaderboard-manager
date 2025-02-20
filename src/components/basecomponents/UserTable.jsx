@@ -19,7 +19,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
     };
     return (
         <div className="px-4 sm:px-6 lg:px-8">
-            <div className="sm:flex sm:items-center justify-between">
+            <div className="sm:flex sm:items-center">
 
                 <div className="sm:flex-auto text-left">
                     <h1 className="text-base font-semibold text-gray-900">Users</h1>
@@ -68,12 +68,21 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                             onClick={col.onClick}
                                             className={` px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer ${col.onClick ? "hover:text-cyan-900" : ""}`}
                                         >
-                                            <a href="#" className="group inline-flex" >
+                                            {/* <a href="#" className="group inline-flex" >
                                                 {col.label}
                                                 <span className="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200">
                                                     <ChevronUpDownIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
                                                 </span>
-                                            </a>
+                                            </a> */}
+                                            <div className="group inline-flex items-center">
+                                                {col.label}
+                                                {/* Conditionally render the icon only for Name and Points columns */}
+                                                {col.onClick && (
+                                                    <span className="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200">
+                                                        <ChevronUpDownIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
+                                                    </span>
+                                                )}
+                                            </div>
                                         </th>
                                     ))}
                                     <th className="relative py-3.5 pl-3 pr-4 sm:pr-3">
@@ -96,7 +105,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                                         onClick={() => handleOpenModal(user)}
                                                         className="text-gray-900 hover:text-cyan-800"
                                                     >
-                                                        {user[col.key]}
+                                                        {` ${user.name} ${user.last_name}`}
                                                     </button>
                                                 )
                                                     : col.key === "points" ? (
@@ -106,8 +115,9 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                                     )}
                                             </td>
                                         ))}
-                                        <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-500">
-                                            <div className="flex gap-2">
+                                        {/* <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-500"> */}
+                                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium sm:pr-3">
+                                            <div className="flex gap-2 justify-end">
                                                 <button onClick={() => handleUpdatePoints(user.id, 1)} className="whitespace-nowrap px-2 py-1 text-sm text-gray-500">
                                                     <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                                                         +
