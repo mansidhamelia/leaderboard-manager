@@ -1,15 +1,40 @@
-import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react';
+import { ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 export default function Table({ columns, data, onAddUser, handleUpdatePoints, confirmDeleteUser }) {
+
+    const [searchTerm, setSearchTerm] = useState('');
+
+    // Handle filtering
+    const filteredData = data.filter(user =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     return (
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center justify-between">
-                <div className="sm:flex-auto">
+
+                <div className="sm:flex-auto text-left">
                     <h1 className="text-base font-semibold text-gray-900">Users</h1>
                     <p className="mt-2 text-sm text-gray-700">
                         A list of all the users, including their details and actions.
                     </p>
                 </div>
+
+                {/* Search Bar */}
+                <div className="relative ">
+                    <MagnifyingGlassIcon
+                        aria-hidden="true"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 size-5 text-gray-400"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Search by name..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    />
+                </div>
+
                 <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                     <button
                         onClick={onAddUser}
@@ -21,6 +46,8 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                 </div>
             </div>
 
+
+            {/* Table */}
             <div className="mt-8 flow-root">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -47,8 +74,8 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
                                 </tr>
                             </thead>
                             <tbody className="bg-white">
-                                {data.map((user) => (
-                                    <tr key={user.id} className="even:bg-gray-50">
+                                {filteredData.map((user) => (
+                                    <tr key={user.id} className="even:bg-gray-50 text-left">
                                         {columns.map((col) => (
                                             <td key={col.key} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                 {user[col.key]}

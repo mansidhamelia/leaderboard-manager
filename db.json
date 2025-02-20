@@ -13,12 +13,32 @@
             "age": 35,
             "points": 0,
             "address": "125 86th street"
-        }, {
+        },
+         {
             "id": 3,
             "name": "Mike",
             "age": 26,
             "points": 0,
 
+            "address": "125 86th street"
+        },
+        {
+            "id": 4,
+            "name": "Chris",
+            "age": 30,
+            "points": 0,
+            "address": "125 86th street"
+        }, {
+            "id": 5,
+            "name": "Bell",
+            "age": 28,
+            "points": 0,
+            "address": "125 86th street"
+        }, {
+            "id": 6,
+            "name": "Kevin",
+            "age": 32,
+            "points": 0,
             "address": "125 86th street"
         }
     ]
