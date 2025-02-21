@@ -21,6 +21,8 @@ const UserList = () => {
     const [showNotification, setShowNotification] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState("");
 
+    const API_BASE_URL = "https://json-server-api-qd86.onrender.com";
+
     const columns = [
         { key: "name", label: "Name", onClick: () => handleSort('name') },
         { key: "points", label: "Points", onClick: () => handleSort('points') },
@@ -29,23 +31,21 @@ const UserList = () => {
     const handleSort = (column) => {
         if (sortBy === column) {
             setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-            console.log('clicked')
         } else {
             setSortBy(column);
-            console.log('not clicked')
             setSortDirection('desc');
         }
     };
 
     useEffect(() => {
-        axios.get('http://localhost:3051/users')
+        axios.get(`${API_BASE_URL}/users`)
             .then(response => {
                 setUsers(response.data);
                 setCurrentPage(1);
                 setIsLoading(false);
             })
             .catch(error => {
-                console.error(error);
+                console.error("Error fetching users:", error);
                 setIsLoading(false);
             })
     }, []);
@@ -82,21 +82,22 @@ const UserList = () => {
         const user = users.find(user => user.id === userId);
         if (!user) return;
 
-        const newPoints = user.points + points;
-        axios.patch(`http://localhost:3051/users/${userId}`, { points: newPoints })
+        const newPoints = Math.max(user.points + points, 0);
+
+        axios.patch(`${API_BASE_URL}/users/${userId}`, { points: newPoints })
             .then(response => {
                 setUsers(users.map(user =>
                     user.id === userId ? { ...user, points: response.data.points } : user
                 ));
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error("Error updating points:", error));
     };
 
     // Delete a user
     const handleDeleteUser = () => {
         if (!selectedUserId) return;
 
-        axios.delete(`http://localhost:3051/users/${selectedUserId}`)
+        axios.delete(`${API_BASE_URL}/users/${selectedUserId}`)
             .then(() => {
                 setUsers(prevUsers => prevUsers.filter(user => user.id !== selectedUserId));
                 setNotificationMessage("User deleted successfully!");
@@ -105,7 +106,7 @@ const UserList = () => {
                     setShowNotification(false);
                 }, 3000);
             })
-            .catch(error => console.error(error))
+            .catch(error => console.error("Error deleting user:", error))
             .finally(() => {
                 setIsAlertOpen(false);
             });
@@ -117,7 +118,7 @@ const UserList = () => {
     };
 
     const handleAddUser = (newUser) => {
-        axios.post('http://localhost:3051/users', newUser)
+        axios.post(`${API_BASE_URL}/users`, newUser)
             .then(response => {
                 setUsers([...users, response.data]);
                 setIsAddUserModalOpen(false);

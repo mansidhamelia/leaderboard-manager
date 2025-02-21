@@ -14,7 +14,7 @@ A simple leaderboard application that allows users to be added, removed, and upd
 
 ### 1️ Clone the Repository  
 
-`git clone https://github.com/yourusername/leaderboard-manager.git`
+`git clone https://github.com/mansidhamelia/leaderboard-manager.git`
 `cd leaderboard-manager`
 
 ### 2️ Install Dependencies
@@ -100,4 +100,4 @@ To deploy your application:
 
 `npm run build`
 
-2. Deploy the /build folder to your preferred hosting service (Netlify, Vercel, GitHub Pages, etc.).
+2. Deploy the `/build` folder to your preferred hosting service (Netlify, Vercel, GitHub Pages, etc.).
