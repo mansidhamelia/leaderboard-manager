@@ -4,8 +4,7 @@ A simple leaderboard application that allows users to be added, removed, and upd
 ---
 
 ##  Live Demo  
- **Frontend:** [https://your-live-link.com](https://your-live-link.com)  
- **API (Mock JSON Server):** [https://your-api-link.com](https://your-api-link.com)  
+ **Frontend:** [https://your-live-link.com](https://mansidhamelia.github.io/leaderboard-manager/)  
 
 ---
 
@@ -13,8 +12,8 @@ A simple leaderboard application that allows users to be added, removed, and upd
 
 ### 1️ Clone the Repository  
 
-`git clone https://github.com/yourusername/leaderboard-manager.git
-cd leaderboard-manager`
+`git clone https://github.com/yourusername/leaderboard-manager.git`
+`cd leaderboard-manager`
 
 ### 2️ Install Dependencies
 
