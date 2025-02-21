@@ -69,3 +69,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Mock API Endpoints
+
+- **GET /users**: Get all users.
+- **POST /users**: Add a new user.
+- **PATCH /users/:id**: Update a user’s points.
+- **DELETE /users/:id**: Delete a user.
+
+To start the mock API, run:
+```bash
+json-server --watch db.json --port 3051

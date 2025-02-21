@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AlertDialog from "./basecomponents/AlertDialogBox";
-import Table from "./basecomponents/UserTable";
-import AddUserForm from "./AddUserForm";
-import Pagination from "./basecomponents/BasePaginationComponent";
-import Notification from "./basecomponents/BaseNotificationComponent";
+import AlertDialog from "./baseComponents/AlertDialogBoxComponent";
+import Table from "./baseComponents/UserTableComponent";
+import AddUserForm from "./ModalComponents/AddUserModal";
+import Pagination from "./baseComponents/BasePaginationComponent";
+import Notification from "./baseComponents/BaseNotificationComponent";
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -18,7 +18,6 @@ const UserList = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortDirection, setSortDirection] = useState('desc');
 
-    // Notification state
     const [showNotification, setShowNotification] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState("");
 
@@ -155,7 +154,6 @@ const UserList = () => {
                         sortBy={sortBy}
                         sortDirection={sortDirection}
                     />
-                    {/* Pagination */}
                     <Pagination
                         currentPage={currentPage}
                         totalPages={Math.ceil(filteredUsers.length / usersPerPage)}
@@ -176,7 +174,6 @@ const UserList = () => {
                 title="Delete User"
                 message="Are you sure you want to delete this user? This action cannot be undone."
             />
-            {/* Add User Modal */}
             {isAddUserModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-96">

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import UserModal from './UserModalComponent';
+import UserModal from '../ModalComponents/UserDetailsModal';
 
 export default function Table({ columns, data, onAddUser, handleUpdatePoints, confirmDeleteUser, searchTerm, setSearchTerm, sortBy, sortDirection }) {
 
@@ -11,6 +11,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
         setSelectedUser(user);
         setIsModalOpen(true);
     };
+
     return (
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
@@ -49,7 +50,7 @@ export default function Table({ columns, data, onAddUser, handleUpdatePoints, co
             </div>
 
 
-            {/* Table */}
+            {/* Table content*/}
             <div className="mt-8 flow-root max-w-screen-lg">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8 border">
