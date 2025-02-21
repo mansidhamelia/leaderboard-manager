@@ -6,7 +6,7 @@ A simple leaderboard application that allows users to be added, removed, and upd
 ##  Live Demo  
 
  **Frontend:** [https://your-live-link.com](https://mansidhamelia.github.io/leaderboard-manager/)  
- **API (Mock JSON Server):** [https://your-api-link.com](https://leaderboard-api-j77i.onrender.com)  
+ **API (Mock JSON Server):** [https://your-api-link.com](https://json-server-api-qd86.onrender.com)  
 
 ---
 
@@ -29,7 +29,7 @@ The project uses a JSON server as a mock API. To start it, run:
 
 To use the deployed API, update frontend API URL to:
 
-`https://leaderboard-api-j77i.onrender.com`
+`https://json-server-api-qd86.onrender.com`
 
 Mock API will be available at: http://localhost:3051
 
