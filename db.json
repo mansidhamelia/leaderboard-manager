@@ -5,7 +5,7 @@
       "name": "Emma",
       "last_name": "W",
       "age": 20,
-      "points": 0,
+      "points": 1,
       "address": "2554 Burrard street"
     },
     {
@@ -21,7 +21,7 @@
       "name": "James",
       "last_name": "Lee",
       "age": 26,
-      "points": 0,
+      "points": 1,
       "address": "254 Dunsmuir street Vancouver"
     },
     {
@@ -61,7 +61,7 @@
       "name": "Frank",
       "last_name": "S",
       "age": 6,
-      "points": 0,
+      "points": 1,
       "address": "2530 255 th street"
     }
   ]

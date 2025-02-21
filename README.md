@@ -5,7 +5,7 @@ A simple leaderboard application that allows users to be added, removed, and upd
 
 ##  Live Demo  
  **Frontend:** [https://your-live-link.com](https://your-live-link.com)  
- **API (Mock JSON Server):** [https://your-api-link.com](https://your-api-link.com)  
+ **API (Mock JSON Server):** [https://your-api-link.com](https://leaderboard-api-j77i.onrender.com)  
 
 ---
 
@@ -26,12 +26,15 @@ The project uses a JSON server as a mock API. To start it, run:
 
 `json-server --watch db.json --port 3051`
 
+To use the deployed API, update frontend API URL to:
+
+`https://leaderboard-api-j77i.onrender.com`
 
 Mock API will be available at: http://localhost:3051
 
 ### 4️ Start the Frontend
 
-`npm start`
+`npm run start`
 
 Now, open your browser and visit: http://localhost:3000
 
