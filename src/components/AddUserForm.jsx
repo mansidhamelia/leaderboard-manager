@@ -48,7 +48,7 @@ const AddUserForm = ({ onAddUser, onClose }) => {
                 <div className="px-4 py-6 sm:p-8">
                     <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-6">
                         <div className="sm:col-span-3">
-                            <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
+                            <label htmlFor="first-name" className="block text-left text-sm/6 font-medium text-gray-900">
                                 First name
                             </label>
                             <div className="mt-2">
@@ -67,7 +67,7 @@ const AddUserForm = ({ onAddUser, onClose }) => {
                         </div>
 
                         <div className="sm:col-span-3">
-                            <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
+                            <label htmlFor="last-name" className="block text-left  text-sm/6 font-medium text-gray-900">
                                 Last Name
                             </label>
                             <div className="mt-2">
@@ -86,7 +86,7 @@ const AddUserForm = ({ onAddUser, onClose }) => {
                         </div>
 
                         <div className="sm:col-span-4">
-                            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                            <label htmlFor="email" className="block text-left  text-sm/6 font-medium text-gray-900">
                                 Age
                             </label>
                             <div className="mt-2">
@@ -103,7 +103,7 @@ const AddUserForm = ({ onAddUser, onClose }) => {
                             </div>
                         </div>
                         <div className="col-span-full">
-                            <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
+                            <label htmlFor="street-address" className="block text-left text-sm/6 font-medium text-gray-900">
                                 Address
                             </label>
                             <div className="mt-2">
@@ -115,6 +115,7 @@ const AddUserForm = ({ onAddUser, onClose }) => {
                                     value={address}
                                     onChange={(e) => setAddress(e.target.value)}
                                     autoComplete="street-address"
+                                    required
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-cyan-900 sm:text-sm/6"
                                 />
                             </div>
