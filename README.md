@@ -5,8 +5,8 @@ A simple leaderboard application that allows users to be added, removed, and upd
 
 ##  Live Demo  
 
- **Frontend:** [https://your-live-link.com](https://mansidhamelia.github.io/leaderboard-manager/)  
- **API (Mock JSON Server):** [https://your-api-link.com](https://json-server-api-qd86.onrender.com)  
+ **Frontend:** [leaderboard-manager](https://mansidhamelia.github.io/leaderboard-manager/)  
+ **API (Mock JSON Server):** [json-server-api](https://json-server-api-qd86.onrender.com)  
 
 ---
 
