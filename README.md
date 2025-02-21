@@ -8,7 +8,6 @@ A simple leaderboard application that allows users to be added, removed, and upd
  **Frontend:** [https://your-live-link.com](https://your-live-link.com)  
  **API (Mock JSON Server):** [https://your-api-link.com](https://leaderboard-api-j77i.onrender.com)  
 
-
 ---
 
 ## Project Setup & Installation  
