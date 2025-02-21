@@ -12,24 +12,26 @@ A simple leaderboard application that allows users to be added, removed, and upd
 ## Project Setup & Installation  
 
 ### 1️ Clone the Repository  
-```bash
-git clone https://github.com/yourusername/leaderboard-manager.git
-cd leaderboard-manager
+
+`git clone https://github.com/yourusername/leaderboard-manager.git
+cd leaderboard-manager`
 
 ### 2️ Install Dependencies
-```bash
-npm install
+
+`npm install`
+
 
 ### 3️ Start the Mock API Server
 The project uses a JSON server as a mock API. To start it, run:
-```bash
-json-server --watch db.json --port 3051
+
+`json-server --watch db.json --port 3051`
+
 
 Mock API will be available at: http://localhost:3051
 
 ### 4️ Start the Frontend
-```bash
-npm start
+
+`npm start`
 
 Now, open your browser and visit: http://localhost:3000
 
@@ -50,38 +52,48 @@ POST	/users	    Add a new user
 PATCH	/users/:id	Update a user's points
 DELETE	/users/:id	Remove a user from the leaderboard
 
+| Method  | Endpoint      | Description                   |
+|---------|--------------|-------------------------------|
+| **GET**  | `/users`      | Get all users                |
+| **POST** | `/users`      | Add a new user               |
+| **PATCH** | `/users/:id`  | Update a user's points       |
+| **DELETE** | `/users/:id`  | Remove a user from the leaderboard |
+
 ---
 Example API Request (Add a User)
-```bash
-json
+
+`json
 POST /users
 {
   "name": "John Doe",
   "age": 25,
   "points": 0,
   "address": "123 Street, City"
-}
+}`
 
 Example API Request (Update Points)
-```bash
-json
+
+`json
 PATCH /users/1
 {
   "points": 10
-}
+}`
 
  Available Scripts
- ---
-Command	                                   Description
-npm start	                               Runs the app in development mode (http://localhost:3000)
-npm run build	                            Builds the app for production
-json-server --watch db.json --port 3051  	Starts the mock API at http://localhost:3051
----
+
+| Command	         | Description                   |
+|--------- | -------------------------------|
+| **npm start**     |  Runs the app in development mode (http://localhost:3000)                |
+| **npm run build**     |  Builds the app for production               |
+| **json-server --watch db.json --port 3051** |  Starts the mock API at http://localhost:3051       |
+
+
+
 Deployment
 To deploy your application:
 
 1. Build the project:
-```bash
-npm run build
+
+`npm run build`
 
 2. Deploy the /build folder to your preferred hosting service (Netlify, Vercel, GitHub Pages, etc.).
