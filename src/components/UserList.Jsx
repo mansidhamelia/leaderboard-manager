@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import AlertDialog from "./baseComponents/AlertDialogBoxComponent";
 import Table from "./baseComponents/UserTableComponent";
@@ -54,28 +54,27 @@ const UserList = () => {
     }, [searchTerm]);
 
     // Handle sorting
-    const sortedUsers = users.sort((a, b) => {
-        if (sortBy === 'name') {
-            return sortDirection === 'asc'
-                ? a.name.localeCompare(b.name)
-                : b.name.localeCompare(a.name);
-        }
-        if (sortBy === 'points') {
-            return sortDirection === 'asc'
-                ? a.points - b.points
-                : b.points - a.points;
-        }
-        return 0;
-    });
+    const sortedUsers = useMemo(() => {
+        if (!sortBy) return users;
+        return [...users].sort((a, b) => {
+            if (sortBy === 'name') {
+                return sortDirection === 'asc'
+                    ? a.name.localeCompare(b.name)
+                    : b.name.localeCompare(a.name);
+            }
+            if (sortBy === 'points') {
+                return sortDirection === 'asc'
+                    ? a.points - b.points
+                    : b.points - a.points;
+            }
+            return 0;
+        });
+    }, [users, sortBy, sortDirection]);
 
     const filteredUsers = sortedUsers.filter(user =>
         user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Pagination logic
-    const indexOfLastUser = currentPage * usersPerPage;
-    const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
     // update points
     const handleUpdatePoints = (userId, points) => {
@@ -86,9 +85,10 @@ const UserList = () => {
 
         axios.patch(`${API_BASE_URL}/users/${userId}`, { points: newPoints })
             .then(response => {
-                setUsers(users.map(user =>
+                const updatedUser = users.map(user =>
                     user.id === userId ? { ...user, points: response.data.points } : user
-                ));
+                );
+                setUsers(updatedUser);
             })
             .catch(error => console.error("Error updating points:", error));
     };
@@ -118,9 +118,25 @@ const UserList = () => {
     };
 
     const handleAddUser = (newUser) => {
+        // name validation
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].name === newUser.name) {
+
+                console.log("User already exists");
+                setIsAddUserModalOpen(false)
+                setNotificationMessage("User already exists!");
+                setShowNotification(true);
+                setTimeout(() => {
+                    setShowNotification(false);
+                }, 3000);
+                return;
+            }
+        }
+
         axios.post(`${API_BASE_URL}/users`, newUser)
             .then(response => {
-                setUsers([...users, response.data]);
+                const updatedUsers = [...users, response.data];
+                setUsers(updatedUsers);
                 setIsAddUserModalOpen(false);
 
                 setNotificationMessage("User added successfully!");
@@ -137,11 +153,16 @@ const UserList = () => {
         setCurrentPage(page);
     };
 
+    // Pagination logic
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+
     return (
         <div>
-            <h1 className="font-bold text-cyan-900 text-4xl my-3">Leaderboard</h1>
+            <h1 className="font-bold text-cyan-900 text-4xl my-3" >Leaderboard</h1>
             {isLoading ? (
-                <p>Loading...</p>
+                <p style={{ color: "var(--text-color" }}>Loading...</p>
             ) : (
                 <>
                     <Table
@@ -152,8 +173,6 @@ const UserList = () => {
                         onAddUser={() => setIsAddUserModalOpen(true)}
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
-                        sortBy={sortBy}
-                        sortDirection={sortDirection}
                     />
                     <Pagination
                         currentPage={currentPage}
